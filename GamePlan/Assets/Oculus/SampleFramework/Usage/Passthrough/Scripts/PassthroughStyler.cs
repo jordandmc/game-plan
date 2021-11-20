@@ -20,6 +20,7 @@ public class PassthroughStyler : MonoBehaviour
     float savedBrightness = 0.0f;
     float savedContrast = 0.0f;
     float savedPosterize = 0.0f;
+    bool isLocked = false;
 
     public CanvasGroup mainCanvas;
 
@@ -58,8 +59,11 @@ public class PassthroughStyler : MonoBehaviour
 
         if (fadeIn != null) StopCoroutine(fadeIn);
         if (fadeOut != null) StopCoroutine(fadeOut);
-        fadeIn = FadeToCurrentStyle(0.2f);
-        StartCoroutine(fadeIn);
+
+        if(!isLocked){
+            fadeIn = FadeToCurrentStyle(0.2f);
+            StartCoroutine(fadeIn);
+        }
     }
 
     public void Release()
@@ -70,8 +74,11 @@ public class PassthroughStyler : MonoBehaviour
 
         if (fadeIn != null) StopCoroutine(fadeIn);
         if (fadeOut != null) StopCoroutine(fadeOut);
-        fadeOut = FadeToDefaultPassthrough(0.2f);
-        StartCoroutine(fadeOut);
+
+        if(!isLocked){
+            fadeOut = FadeToDefaultPassthrough(0.2f);
+            StartCoroutine(fadeOut);
+        }
     }
 
     IEnumerator FadeToCurrentStyle(float fadeTime)
@@ -156,7 +163,7 @@ public class PassthroughStyler : MonoBehaviour
 
     public void DoColorDrag(bool doDrag)
     {
-        settingColor = doDrag;
+        if(!isLocked) settingColor = doDrag;
     }
 
     public void GetColorFromWheel()
@@ -174,5 +181,19 @@ public class PassthroughStyler : MonoBehaviour
         }
         savedColor = new Color(sampledColor.r, sampledColor.g, sampledColor.b, savedColor.a);
         passthroughLayer.edgeColor = savedColor;
+    }
+
+    public void SetSavedColor(Color color){
+        savedColor = color;
+    }
+
+    public void Toggle_Changed(bool newValue){
+        foreach(RectTransform item in menuOptions){
+            Slider slider = item.GetComponent<Slider>();
+            Button button = item.GetComponent<Button>();
+            if (slider) slider.interactable = !newValue;
+            if (button) button.interactable = !newValue;
+        }
+        isLocked = newValue;
     }
 }
