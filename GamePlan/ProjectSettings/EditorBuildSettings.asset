@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Oculus/SampleFramework/Usage/StartScene.unity
+    guid: 071fba5195bd4b04eab8668985aa1683
+  - enabled: 1
+    path: Assets/Scenes/PortalScene.unity
+    guid: fd5a283a4ab259c46bfc1da15d28ef0a
+  - enabled: 1
+    path: Assets/Oculus/SampleFramework/Usage/Passthrough.unity
+    guid: 58e5fc2486c774a4e88ac76261268d52
+  - enabled: 1
+    path: Assets/Oculus/SampleFramework/Usage/Passthrough/Scenes/SelectivePassthrough.unity
+    guid: 0e7861142f653584586c707ede59072e
+  m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 1d1c0c39d74bab74180a88ccceaa5a77, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 21e4271b41f214a4995a7d16e6a5ee18, type: 2}
+    xr.sdk.mock-hmd.settings: {fileID: 11400000, guid: 41ea12d74049d2e4e9e2b5743ec66728, type: 2}
