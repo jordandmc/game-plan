@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MatrixButtonHandler : MonoBehaviour
 {
-    public PassthroughStyler passthroughStyler;
+    public PassthroughStylerEnhanced passthroughStyler;
     // RectTransform colorWheel = passthroughLayer.colorWheel;
     // public Texture2D colorTexture;
     Color color = new Color(0.1f, 0.5f, 0.13f, 0.33f);
